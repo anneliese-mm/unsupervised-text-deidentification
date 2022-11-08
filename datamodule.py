@@ -75,7 +75,7 @@ class WikipediaDataModule(LightningDataModule):
         document_model_name_or_path: str,
         profile_model_name_or_path: str,
         max_seq_length: int,
-        dataset_name: str = "/Users/anneliese.mm/PycharmProjects/unsupervised-text-deidentification",
+        dataset_name: str = "unsupervised-text-deidentification",
         dataset_train_split: str = "train",
         dataset_val_split: str = "val",
         dataset_test_split: str = "test",
@@ -94,7 +94,7 @@ class WikipediaDataModule(LightningDataModule):
         **kwargs,
     ):
         super().__init__()
-        assert dataset_name == "/Users/anneliese.mm/PycharmProjects/unsupervised-text-deidentification"
+        assert dataset_name == "unsupervised-text-deidentification"
         #assert datasets.__version__[0] == '2', "need datasets v2 for datamodule"
         assert "train" in dataset_train_split
         assert "val" in dataset_val_split
@@ -142,8 +142,8 @@ class WikipediaDataModule(LightningDataModule):
 
         # wiki_bio train size: 582,659
         print(f"loading {self.dataset_name} split {self.dataset_train_split}")
-        data_files = {"train": "/Users/anneliese.mm/PycharmProjects/unsupervised-text-deidentification/wiki_train.json",
-                      "test": "/Users/anneliese.mm/PycharmProjects/unsupervised-text-deidentification/wiki_test.json"}
+        data_files = {"train": "wiki_train.json",
+                      "test": "wiki_test.json"}
         self.train_dataset = datasets.load_dataset("json", data_files =
                                                    data_files, split=self.dataset_train_split)
 

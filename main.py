@@ -20,8 +20,8 @@ USE_WANDB = False
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
-# num_cpus = len(os.sched_getaffinity(0))
-num_cpus = 1
+num_cpus = len(os.sched_getaffinity(0))
+# num_cpus = 6
 
 
 def get_args() -> argparse.Namespace:
@@ -141,7 +141,7 @@ def transformers_name_from_name(name: str) -> str:
 
 
 def main(args: argparse.Namespace):
-    # assert torch.cuda.is_available(), "need CUDA for training!"
+    assert torch.cuda.is_available(), "need CUDA for training!"
     seed_everything(42)
 
     document_model = transformers_name_from_name(args.document_model_name)
@@ -163,8 +163,8 @@ def main(args: argparse.Namespace):
         sample_spans=args.sample_spans,
         train_batch_size=args.batch_size,
         eval_batch_size=args.batch_size,
-        num_workers = 1,
-        # num_workers=round(num_cpus / torch.cuda.device_count()),
+        # num_workers = 1,
+        num_workers=round(num_cpus / torch.cuda.device_count()),
         num_nearest_neighbors=args.num_nearest_neighbors,
     )
     dm.setup("fit")
