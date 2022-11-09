@@ -18,7 +18,7 @@ from utils import model_cls_dict
 
 USE_WANDB = False
 
-#test if everyhting is better
+#pretty please
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
