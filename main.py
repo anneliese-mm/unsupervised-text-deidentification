@@ -18,6 +18,8 @@ from utils import model_cls_dict
 
 USE_WANDB = False
 
+#test if everyhting is better
+
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 num_cpus = len(os.sched_getaffinity(0))
